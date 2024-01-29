@@ -1,0 +1,33 @@
+.spotify-player-container, .genre-buttons {
+    text-align: center; /* Centering content */
+    margin-top: 20px;
+}
+
+#return-home {
+    border: 1px solid #f1c40f;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+#return-home:hover {
+    background-color: #f1c40f;
+    color: #0d0d0d;
+}
+
+.ai-typing-box {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#ai-typing-message {
+    background-color: #262626;
+    border: 1px solid #333333;
+    color: #4caf50;
+    padding: 10px;
+    width: 80%;
+    border-radius: 4px;
+}
+
+
+
+

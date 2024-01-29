@@ -1,0 +1,66 @@
+body.terminal {
+    background-color: black;
+}
+
+.terminal-window:before {
+    background: repeating-linear-gradient(
+        45deg,
+        #000000,
+        #000000 10px,
+        #000000 10px,
+        #000000 20px
+    );
+}
+
+.terminal-content p {
+    color: #ff3333;
+    white-space: pre-wrap; /* Preserves formatting for script.js */
+}
+
+.ai-takeover {
+    background-color: #1a1a1a; /* Darker background */
+    /* Additional styling changes */
+}
+
+.ai-control-message {
+    color: red; /* Make these messages stand out */
+    font-weight: bold;
+    /* Additional styling for these messages */
+}
+
+#ai-terminal {
+    background-color: #000; /* Black background for terminal window */
+    color: #39ff14; /* Green text color typical of terminals */
+    font-family: 'Courier New', monospace;
+    margin: 50px auto;
+    width: 80%;
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.6); /* Glowing effect */
+}
+
+.terminal-header {
+    background-color: #222; /* Dark header */
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.terminal-body {
+    background-color: #000;
+    height: 400px; /* Adjust as needed */
+    overflow-y: auto; /* Allow scrolling */
+    padding: 20px;
+    border-top: 3px solid #39ff14; /* Green border top for effect */
+}
+
+.terminal-body p {
+    margin: 0;
+    padding: 3px 0;
+    font-size: 1em;
+}
+
+
+
+
+

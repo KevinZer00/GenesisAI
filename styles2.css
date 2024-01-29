@@ -1,0 +1,104 @@
+body.terminal {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+
+.terminal-content {
+    background-color: black;
+    border: black;
+}
+
+
+.chat-box {
+    background-color: #262626; /* Dark background, typical for terminals */
+    color: #d0d0d0; /* Light text color for readability */
+    padding: 10px;
+    margin: auto;
+    max-width: 1200px;
+    height: 600px; /* Fixed height for chat area */
+    overflow-y: auto; /* Scrollable chat content */
+    border: 1px solid #333333; /* Subtle border for definition */
+    border-radius: 4px; /* Slight rounded corners */
+    position: relative;
+    z-index: 10;
+}
+
+#chat-input {
+    background-color: #ffae00;
+}
+
+
+.chat-box-clone {
+    background-color: #000000; /* Dark background, typical for terminals */
+    color: #929090; /* Light text color for readability */
+    padding: 10px;
+    width: 1200px;
+    margin: auto;
+    height: 600px; /* Fixed height for chat area */
+    border: 1px solid #ff0000; /* Subtle border for definition */
+    border-radius: 4px; /* Slight rounded corners */
+    z-index: 12; // Ensure clones go behind other content
+}
+
+
+
+.chat-message {
+    margin-bottom: 8px;
+    padding: 5px;
+    background-color: transparent; /* No background for messages */
+    
+    line-height: 1.4;
+    word-wrap: break-word; /* Ensure long words do not overflow */
+}
+
+.user-message {
+    color: #ffae00; /* Green text color for user messages */
+    text-align: left;
+    margin-left: 5px; /* Slight margin for visual separation */
+}
+
+.ai-message {
+    color: #4caf50; /* Different shade of green for AI messages */
+    text-align: left;
+    margin-right: 5px;
+}
+
+.chat-box-clone .user-message {
+    color: red;
+}
+
+.chat-box-clone .ai-message {
+    color: red;
+}
+
+.chat-box::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+}
+
+.chat-box::-webkit-scrollbar-track {
+    background: #1e1e1e; /* Track color */
+    border-radius: 10px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+    background: #4caf50; /* Thumb color, you can change it as needed */
+    border-radius: 10px;
+}
+
+.chat-box-clone::-webkit-scrollbar-thumb {
+    background: black; /* Thumb color, you can change it as needed */
+    border-radius: 10px;
+}
+
+.chat-box::-webkit-scrollbar-thumb:hover {
+    background: #729fcf; /* Thumb color on hover */
+}
+
+.chat-box {
+    scrollbar-width: thin; /* "auto" or "thin" */
+    scrollbar-color: #4caf50 #1e1e1e; /* thumb and track color */
+}
+
+

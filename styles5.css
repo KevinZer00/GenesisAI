@@ -1,0 +1,85 @@
+
+.tic-tac-toe-board {
+    background-color: #262626; /* Dark background, similar to chat-box */
+    color: #d0d0d0; /* Light text color for readability */
+    padding: 20px;
+    margin: auto;
+    max-width: 400px; /* Adjust based on preferred size */
+    height: 400px; /* Square board */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5px; /* Space between cells */
+    border: 1px solid #333333; /* Subtle border for definition */
+    border-radius: 4px; /* Slight rounded corners */
+}
+
+.tic-tac-toe-cell {
+    background-color: transparent; /* No background for cells */
+    border: 1px solid #4caf50; /* Border color similar to AI messages */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em; /* Larger font for visibility */
+    cursor: pointer;
+    color: #ffae00; /* Color similar to user messages */
+    height: 100px;
+    width: 100px;
+    margin: auto;
+    font-size: 40px;
+    font-family: 'Courier New', monospace;
+   
+}
+
+.tic-tac-toe-cell:hover {
+    background-color: #1e1e1e; /* Slightly darker on hover */
+}
+
+.tic-tac-toe-cell.taken {
+    cursor: default;
+    background-color: #262626; /* Darker color for taken cells */
+}
+
+#return-home {
+    border: 1px solid #f1c40f;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+#return-home:hover {
+    background-color: #f1c40f;
+    color: #0d0d0d;
+}
+
+.terminal-button {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #4caf50;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: 'Courier New', monospace;
+    transition: background-color 0.3s;
+}
+
+.terminal-button:hover {
+    background-color: #4caf50;
+    color: #0d0d0d;
+}
+
+#ai-thinking-message {
+    color: #f1c40f;
+    text-align: center;
+    margin-bottom: 100px;
+    position: absolute;
+}
+
+#game-result {
+    color: #e74c3c;
+    text-align: center;
+    margin-top: 10px;
+}

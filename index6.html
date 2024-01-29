@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.4/dist/terminal.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles6.css" />
+    <title></title>
+</head>
+
+<body class="terminal">
+    <div class="terminal-window">
+        <header class="terminal-header">
+            <h1>Music Selector - AI Genesis</h1>
+        </header>
+
+        <div class="terminal-content">
+            <button id="return-home" class="terminal-button">Return Home</button>
+            <div class="ai-typing-box">
+                <input type="text" id="ai-typing-message" disabled>
+            </div>
+            
+            
+            <div class="spotify-player-container">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DWWQRwui0ExPn?utm_source=generator" width="75%" height="500px" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+
+            <div class="genre-buttons">
+                <!-- Replace with actual Spotify track IDs -->
+                <button class="terminal-button" onclick="changeGenre('Rap')">Rap</button>
+                <button class="terminal-button" onclick="changeGenre('Pop')">Pop</button>
+                <button class="terminal-button" onclick="changeGenre('K-Pop')">K-Pop</button>
+                <button class="terminal-button" onclick="changeGenre('Jazz')">Jazz</button>
+                <button class="terminal-button" onclick="changeGenre('Reggaeton')">Reggaeton</button>
+                <button class="terminal-button" onclick="changeGenre('Country')">Country</button>
+                <button class="terminal-button" onclick="changeGenre('Lo-Fi')">Lo-Fi</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="music.js"></script>
+</body>
+
+</html>
