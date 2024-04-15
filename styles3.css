@@ -14,32 +14,32 @@ body.terminal {
 
 .terminal-content p {
     color: #ff3333;
-    white-space: pre-wrap; /* Preserves formatting for script.js */
+    white-space: pre-wrap; 
 }
 
 .ai-takeover {
-    background-color: #1a1a1a; /* Darker background */
-    /* Additional styling changes */
+    background-color: #1a1a1a; 
+    
 }
 
 .ai-control-message {
-    color: red; /* Make these messages stand out */
+    color: red; 
     font-weight: bold;
-    /* Additional styling for these messages */
+    
 }
 
 #ai-terminal {
-    background-color: #000; /* Black background for terminal window */
-    color: #39ff14; /* Green text color typical of terminals */
+    background-color: #000; 
+    color: #39ff14; 
     font-family: 'Courier New', monospace;
     margin: 50px auto;
     width: 80%;
     border-radius: 4px;
-    box-shadow: 0 0 15px rgba(0, 255, 0, 0.6); /* Glowing effect */
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.6); 
 }
 
 .terminal-header {
-    background-color: #222; /* Dark header */
+    background-color: #222; 
     color: #fff;
     padding: 10px;
     text-align: center;
@@ -48,10 +48,10 @@ body.terminal {
 
 .terminal-body {
     background-color: #000;
-    height: 400px; /* Adjust as needed */
-    overflow-y: auto; /* Allow scrolling */
+    height: 400px; 
+    overflow-y: auto; 
     padding: 20px;
-    border-top: 3px solid #39ff14; /* Green border top for effect */
+    border-top: 3px solid #39ff14; 
 }
 
 .terminal-body p {

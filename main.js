@@ -1,11 +1,4 @@
 
-/*
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        document.body.classList.add('spooky');
-    }, 10000); // Change 10000 to the desired time in milliseconds
-});
-*/
 
 document.getElementById('open-modal1').addEventListener('click', function() {
     var modal = document.getElementById('command-animation-modal');
@@ -30,12 +23,12 @@ document.getElementById('open-modal1').addEventListener('click', function() {
             clearInterval(commandInterval);
             setTimeout(function() {
                 modal.style.display = "none";
-                window.location.href = 'index5.html'; // Redirect to the new page
-            }, 2000); // Wait for 2 seconds before redirecting
+                window.location.href = 'index5.html'; 
+            }, 2000); 
         }
     };
 
-    var commandInterval = setInterval(typeCommand, 1000); // Change command every second
+    var commandInterval = setInterval(typeCommand, 1000);
 });
 
 document.getElementById('open-modal2').addEventListener('click', function() {
@@ -61,12 +54,12 @@ document.getElementById('open-modal2').addEventListener('click', function() {
             clearInterval(commandInterval);
             setTimeout(function() {
                 modal.style.display = "none";
-                window.location.href = 'index6.html'; // Redirect to the new page
-            }, 2000); // Wait for 2 seconds before redirecting
+                window.location.href = 'index6.html'; 
+            }, 2000); 
         }
     };
 
-    var commandInterval = setInterval(typeCommand, 1000); // Change command every second
+    var commandInterval = setInterval(typeCommand, 1000); 
 });
 
 document.getElementById('open-modal3').addEventListener('click', function() {
@@ -93,12 +86,12 @@ document.getElementById('open-modal3').addEventListener('click', function() {
             clearInterval(commandInterval);
             setTimeout(function() {
                 modal.style.display = "none";
-                window.location.href = 'index2.html'; // Redirect to the new page
-            }, 2000); // Wait for 2 seconds before redirecting
+                window.location.href = 'index2.html'; 
+            }, 2000); 
         }
     };
 
-    var commandInterval = setInterval(typeCommand, 1000); // Change command every second
+    var commandInterval = setInterval(typeCommand, 1000);
 });
 
 

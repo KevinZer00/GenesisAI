@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const dialogueInterval = setInterval(displayNextDialogue, 2000); // Change dialogue every 2 seconds
+    const dialogueInterval = setInterval(displayNextDialogue, 2000); 
 
     function redirectToNewPage() {
         const newPageUrl = 'index4.html';

@@ -1,43 +1,42 @@
 
 .tic-tac-toe-board {
-    background-color: #262626; /* Dark background, similar to chat-box */
-    color: #d0d0d0; /* Light text color for readability */
+    background-color: #262626; 
+    color: #d0d0d0;
     padding: 20px;
     margin: auto;
-    max-width: 400px; /* Adjust based on preferred size */
-    height: 400px; /* Square board */
+    max-width: 400px; 
+    height: 400px; 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    gap: 5px; /* Space between cells */
-    border: 1px solid #333333; /* Subtle border for definition */
-    border-radius: 4px; /* Slight rounded corners */
+    gap: 5px; 
+    border: 1px solid #333333; 
+    border-radius: 4px;
 }
 
 .tic-tac-toe-cell {
-    background-color: transparent; /* No background for cells */
-    border: 1px solid #4caf50; /* Border color similar to AI messages */
+    background-color: transparent;
+    border: 1px solid #4caf50;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5em; /* Larger font for visibility */
+    font-size: 1.5em; 
     cursor: pointer;
-    color: #ffae00; /* Color similar to user messages */
+    color: #ffae00; 
     height: 100px;
     width: 100px;
     margin: auto;
     font-size: 40px;
     font-family: 'Courier New', monospace;
-   
 }
 
 .tic-tac-toe-cell:hover {
-    background-color: #1e1e1e; /* Slightly darker on hover */
+    background-color: #1e1e1e;
 }
 
 .tic-tac-toe-cell.taken {
     cursor: default;
-    background-color: #262626; /* Darker color for taken cells */
+    background-color: #262626; 
 }
 
 #return-home {
@@ -82,4 +81,18 @@
     color: #e74c3c;
     text-align: center;
     margin-top: 10px;
+}
+
+@media (max-width: 1200px) {
+    .tic-tac-toe-cell {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 500px) {
+    .tic-tac-toe-cell {
+        width: 50px;
+        height: 50px;
+    }
 }

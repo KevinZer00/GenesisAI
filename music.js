@@ -1,18 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Existing code for music genre selection and other functionalities
-
-    // Add event listener for the Return Home button
     const returnHomeButton = document.getElementById('return-home');
     returnHomeButton.addEventListener('click', () => {
-        window.location.href = 'index.html'; // Redirects to the index.html page
+        window.location.href = 'index.html'; 
     });
 
-    // Rest of your existing JavaScript code
 });
 
 
-
-// Define the mapping of genres to arrays of Spotify embed URLs
 const genreToSpotifyURLs = {
     'Rap': [
         'https://open.spotify.com/embed/playlist/37i9dQZF1DX0XUsuxWHRQd?si=123456',
@@ -94,10 +88,10 @@ function changeGenre(genre) {
                 clearInterval(typingInterval);
                 setTimeout(() => {
                     spotifyPlayer.src = randomPlaylist;
-                    typingMessageInput.value = ''; // Clear the message, keeping the input box visible
-                }, 1000); // Delay to switch to the new playlist
+                    typingMessageInput.value = ''; 
+                }, 1000);
             }
-        }, 25); // Speed of typing
+        }, 25); 
 
     } else {
         console.error("Genre not found in the mapping: " + genre);

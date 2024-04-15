@@ -5,10 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const thinkingMessage = document.getElementById('ai-thinking-message');
     const gameResultElement = document.getElementById('game-result');
 
-
     let isBoardInteractive = true; // Flag to control board interactivity
-    let isHardMode = false; // Flag for AI difficulty
-
+    let gameCount = 0; // Keep track of the number of games played
     const boardSize = 3;
     let board = Array(boardSize).fill().map(() => Array(boardSize).fill(''));
     let currentPlayer = 'X'; // Player is 'X', AI is 'O'
@@ -27,48 +25,34 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const cellClicked = (rowIndex, colIndex) => {
-        const gameResultElement = document.getElementById('game-result');
-    
         if (!isBoardInteractive || board[rowIndex][colIndex] || checkWinner()) return;
-    
+
         board[rowIndex][colIndex] = currentPlayer;
         createBoard();
-    
+
         let winner = checkWinner();
         if (winner) {
-            if (winner === 'Tie') {
-                gameResultElement.textContent = "It's a tie!";
-            } else if (winner === 'X') {
-                gameResultElement.textContent = "You win!";
-            } else if (winner === 'O') {
-                gameResultElement.textContent = "Genesis wins!";
-            }
+            gameResultElement.textContent = winner === 'Tie' ? "It's a tie!" : winner === 'X' ? "You win!" : "Genesis wins!";
             isBoardInteractive = false; // Disable further interactions
             return;
         }
-    
+
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
         isBoardInteractive = false; // Disable board interaction
         thinkingMessage.textContent = "Genesis is thinking...";
-    
+
         setTimeout(() => {
             aiMove();
             isBoardInteractive = true; // Re-enable board interaction
             createBoard(); // Update the board after AI move
             thinkingMessage.textContent = "";
-        }, 1000); // Simulate AI thinking time
+        }, 1000);
     };
-    
-
-    
-    
-    
 
     const aiMove = () => {
-        if (isHardMode) {
-            if (!makeStrategicMove()) {
-                makeRandomMove();
-            }
+        if (gameCount >= 2) {
+            let bestMove = minimax(board, 'O');
+            board[bestMove.index[0]][bestMove.index[1]] = 'O';
         } else {
             makeRandomMove();
         }
@@ -81,118 +65,106 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const makeRandomMove = () => {
-        for (let i = 0; i < boardSize; i++) {
-            for (let j = 0; j < boardSize; j++) {
-                if (!board[i][j]) {
-                    board[i][j] = 'O';
-                    return true;
+        let emptyCells = emptyIndices(board);
+        if (emptyCells.length > 0) {
+            let randomIndex = Math.floor(Math.random() * emptyCells.length);
+            let cell = emptyCells[randomIndex];
+            board[cell[0]][cell[1]] = 'O';
+        }
+    };
+
+    const minimax = (newBoard, player) => {
+        const availSpots = emptyIndices(newBoard);
+
+        if (checkWin(newBoard, 'X')) {
+            return { score: -10 };
+        } else if (checkWin(newBoard, 'O')) {
+            return { score: 10 };
+        } else if (availSpots.length === 0) {
+            return { score: 0 };
+        }
+
+        let moves = [];
+        for (let i = 0; i < availSpots.length; i++) {
+            let move = {};
+            move.index = availSpots[i];
+            newBoard[move.index[0]][move.index[1]] = player;
+
+            let result = minimax(newBoard, player === 'O' ? 'X' : 'O');
+            move.score = result.score;
+
+            newBoard[move.index[0]][move.index[1]] = '';
+
+            moves.push(move);
+        }
+
+        let bestMove = moves[0];
+        if (player === 'O') {
+            let bestScore = -10000;
+            for (let move of moves) {
+                if (move.score > bestScore) {
+                    bestScore = move.score;
+                    bestMove = move;
+                }
+            }
+        } else {
+            let bestScore = 10000;
+            for (let move of moves) {
+                if (move.score < bestScore) {
+                    bestScore = move.score;
+                    bestMove = move;
                 }
             }
         }
-        return false;
+        return bestMove;
     };
 
-    const makeStrategicMove = () => {
-        // Check for potential win or block in rows, columns, and diagonals
+    const emptyIndices = (board) => {
+        let empty = [];
         for (let i = 0; i < boardSize; i++) {
-            if (checkAndMakeMove(i, 0, i, 1, i, 2)) return true; // Check rows
-            if (checkAndMakeMove(0, i, 1, i, 2, i)) return true; // Check columns
-        }
-    
-        // Check diagonals
-        if (checkAndMakeMove(0, 0, 1, 1, 2, 2) || checkAndMakeMove(0, 2, 1, 1, 2, 0)) return true;
-    
-        // If no immediate win or block, take a corner or center if available
-        if (tryTakeCornerOrCenter()) return true;
-    
-        return false;
-    };
-    
-    const checkAndMakeMove = (row1, col1, row2, col2, row3, col3) => {
-        // Check if two cells are 'O' and one is empty, or two are 'X' and one is empty
-        if (board[row1][col1] && board[row1][col1] === board[row2][col2] && !board[row3][col3]) {
-            board[row3][col3] = 'O';
-            return true;
-        } else if (board[row1][col1] && board[row1][col1] === board[row3][col3] && !board[row2][col2]) {
-            board[row2][col2] = 'O';
-            return true;
-        } else if (board[row2][col2] && board[row2][col2] === board[row3][col3] && !board[row1][col1]) {
-            board[row1][col1] = 'O';
-            return true;
-        }
-        return false;
-    };
-    
-    const tryTakeCornerOrCenter = () => {
-        // Center position
-        if (!board[1][1]) {
-            board[1][1] = 'O';
-            return true;
-        }
-    
-        // Corners
-        const corners = [[0, 0], [0, 2], [2, 0], [2, 2]];
-        for (let corner of corners) {
-            if (!board[corner[0]][corner[1]]) {
-                board[corner[0]][corner[1]] = 'O';
-                return true;
+            for (let j = 0; j < boardSize; j++) {
+                if (board[i][j] === '') {
+                    empty.push([i, j]);
+                }
             }
         }
-    
+        return empty;
+    };
+
+    const checkWin = (board, player) => {
+        // Horizontal, vertical, and diagonal check
+        for (let i = 0; i < 3; i++) {
+            if (board[i][0] === player && board[i][1] === player && board[i][2] === player) return true;
+            if (board[0][i] === player && board[1][i] === player && board[2][i] === player) return true;
+        }
+        if (board[0][0] === player && board[1][1] === player && board[2][2] === player) return true;
+        if (board[2][0] === player && board[1][1] === player && board[0][2] === player) return true;
         return false;
     };
-    
 
     const checkWinner = () => {
-        // Check rows, columns, and diagonals for a winner
-        for (let i = 0; i < boardSize; i++) {
-            if (board[i][0] && board[i][0] === board[i][1] && board[i][0] === board[i][2]) {
-                return board[i][0]; // Winner in a row
-            }
-            if (board[0][i] && board[0][i] === board[1][i] && board[0][i] === board[2][i]) {
-                return board[0][i]; // Winner in a column
-            }
-        }
-        // Check diagonals
-        if (board[0][0] && board[0][0] === board[1][1] && board[0][0] === board[2][2] ||
-            board[0][2] && board[0][2] === board[1][1] && board[0][2] === board[2][0]) {
-            return board[1][1]; // Winner in a diagonal
-        }
-    
-        // Check for a tie
-        if (board.every(row => row.every(cell => cell))) {
-            return 'Tie';
-        }
-    
-        return null; // No winner yet
+        if (checkWin(board, 'X')) return 'X';
+        if (checkWin(board, 'O')) return 'O';
+        if (board.every(row => row.every(cell => cell !== ''))) return 'Tie';
+        return null;
     };
 
     const updateGameResult = (winner) => {
-        const gameResultElement = document.getElementById('game-result');
-        if (winner === 'Tie') {
-            gameResultElement.textContent = "It's a tie!";
-        } else if (winner === 'X') {
-            gameResultElement.textContent = "You win!";
-        } else if (winner === 'O') {
-            gameResultElement.textContent = "Genesis wins!";
-        }
-        isBoardInteractive = false; // Disable further interactions
+        gameResultElement.textContent = winner === 'Tie' ? "It's a tie!" : winner === 'X' ? "You win!" : "Genesis wins!";
+        isBoardInteractive = false;
     };
-    
-    
-    
 
     restartButton.addEventListener('click', () => {
         board = Array(boardSize).fill().map(() => Array(boardSize).fill(''));
         currentPlayer = 'X';
         isBoardInteractive = true;
-        isHardMode = true; // Enable hard mode after restarting the game
-        document.getElementById('game-result').textContent = '';
+        gameCount++; // Increase the game count
+        gameResultElement.textContent = ''; // Clear the game status message
         createBoard();
     });
 
-    returnHomeButton.addEventListener('click', function() {
-        // Redirect to index.html when the button is clicked
+
+    returnHomeButton.addEventListener('click', function () {
         window.location.href = 'index.html';
     });
 

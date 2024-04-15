@@ -12,15 +12,15 @@ body.terminal {
 
 
 .chat-box {
-    background-color: #262626; /* Dark background, typical for terminals */
-    color: #d0d0d0; /* Light text color for readability */
+    background-color: #262626; 
+    color: #d0d0d0; 
     padding: 10px;
     margin: auto;
     max-width: 1200px;
-    height: 600px; /* Fixed height for chat area */
-    overflow-y: auto; /* Scrollable chat content */
-    border: 1px solid #333333; /* Subtle border for definition */
-    border-radius: 4px; /* Slight rounded corners */
+    height: 600px; 
+    overflow-y: auto; 
+    border: 1px solid #333333; 
+    border-radius: 4px; 
     position: relative;
     z-index: 10;
 }
@@ -31,36 +31,35 @@ body.terminal {
 
 
 .chat-box-clone {
-    background-color: #000000; /* Dark background, typical for terminals */
-    color: #929090; /* Light text color for readability */
+    background-color: #000000; 
+    color: #929090; 
     padding: 10px;
     width: 1200px;
     margin: auto;
-    height: 600px; /* Fixed height for chat area */
-    border: 1px solid #ff0000; /* Subtle border for definition */
-    border-radius: 4px; /* Slight rounded corners */
-    z-index: 12; // Ensure clones go behind other content
-}
+    height: 600px; 
+    border: 1px solid #ff0000; 
+    border-radius: 4px; 
+    z-index: 12; }
 
 
 
 .chat-message {
     margin-bottom: 8px;
     padding: 5px;
-    background-color: transparent; /* No background for messages */
+    background-color: transparent; 
     
     line-height: 1.4;
-    word-wrap: break-word; /* Ensure long words do not overflow */
+    word-wrap: break-word; 
 }
 
 .user-message {
-    color: #ffae00; /* Green text color for user messages */
+    color: #ffae00; 
     text-align: left;
-    margin-left: 5px; /* Slight margin for visual separation */
+    margin-left: 5px; 
 }
 
 .ai-message {
-    color: #4caf50; /* Different shade of green for AI messages */
+    color: #4caf50; 
     text-align: left;
     margin-right: 5px;
 }
@@ -74,31 +73,31 @@ body.terminal {
 }
 
 .chat-box::-webkit-scrollbar {
-    width: 10px; /* Width of the scrollbar */
+    width: 10px; 
 }
 
 .chat-box::-webkit-scrollbar-track {
-    background: #1e1e1e; /* Track color */
+    background: #1e1e1e; 
     border-radius: 10px;
 }
 
 .chat-box::-webkit-scrollbar-thumb {
-    background: #4caf50; /* Thumb color, you can change it as needed */
+    background: #4caf50; 
     border-radius: 10px;
 }
 
 .chat-box-clone::-webkit-scrollbar-thumb {
-    background: black; /* Thumb color, you can change it as needed */
+    background: black; 
     border-radius: 10px;
 }
 
 .chat-box::-webkit-scrollbar-thumb:hover {
-    background: #729fcf; /* Thumb color on hover */
+    background: #729fcf; 
 }
 
 .chat-box {
-    scrollbar-width: thin; /* "auto" or "thin" */
-    scrollbar-color: #4caf50 #1e1e1e; /* thumb and track color */
+    scrollbar-width: thin; 
+    scrollbar-color: #4caf50 #1e1e1e; 
 }
 
 

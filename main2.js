@@ -1,28 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
     const chatBox = document.getElementById('chat-box');
     const chatInput = document.getElementById('chat-input');
-    let userMessageCount = 0; // Counter for user messages
-    let aiResponseCount = 0; // Counter for AI responses
+    let userMessageCount = 0;
+    let aiResponseCount = 0;
 
-    // Array of standard AI responses
     const orderedResponses = [
         "Hi! I think I am having trouble understanding. May you repeat that again please?",
         "I still do not understand. Repeat that again, please.",
     ];
 
-    // Existing event listener
 chatInput.addEventListener('keydown', function (event) {
     if (event.key === 'Enter' && chatInput.value.trim() !== '') {
         displayUserMessage(chatInput.value);
-        chatInput.value = ''; // Clear input field
+        chatInput.value = ''; 
         userMessageCount++;
 
         setTimeout(() => {
             let aiResponse;
             if (userMessageCount <= orderedResponses.length) {
-                aiResponse = orderedResponses[userMessageCount - 1]; // Select the next response in order
+                aiResponse = orderedResponses[userMessageCount - 1]; 
             } else {
-                aiResponse = generateCreepyResponse(); // Creepy response after standard responses are exhausted
+                aiResponse = generateCreepyResponse();
             }
             displayAIMessage(aiResponse);
 
@@ -32,7 +30,7 @@ chatInput.addEventListener('keydown', function (event) {
                 makePageCreepy();
                 randomlyDuplicateChatBox();
             }
-        }, 1000); // Simulate AI thinking delay
+        }, 1000);
     }
 });
 
@@ -48,7 +46,7 @@ chatInput.addEventListener('keydown', function (event) {
         aiResponseDiv.className = 'chat-message ai-message';
         aiResponseDiv.textContent = message;
         chatBox.appendChild(aiResponseDiv);
-        chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to the latest message
+        chatBox.scrollTop = chatBox.scrollHeight; 
     }
 
     function generateCreepyResponse() {
@@ -63,17 +61,19 @@ chatInput.addEventListener('keydown', function (event) {
         return creepyResponses[Math.floor(Math.random() * creepyResponses.length)];
     }
 
+
+    // Function to simulate page "glitching"
     function makePageGlitch() {
         const chatMessages = document.querySelectorAll('.chat-message');
         let shufflingInterval;
-        let intervalDuration = 50; // Faster initial interval in milliseconds
+        let intervalDuration = 50; 
 
         // Function to replace text with random characters
         function randomizeText(text) {
             let randomText = '';
             for (let char of text) {
                 if (char === ' ') {
-                    randomText += ' '; // Preserve spaces
+                    randomText += ' '; 
                 } else {
                     const randomChar = String.fromCharCode(Math.random() * (127 - 33) + 33);
                     randomText += randomChar;
@@ -93,13 +93,15 @@ chatInput.addEventListener('keydown', function (event) {
         shufflingInterval = setInterval(updateTexts, intervalDuration);
     }
 
+
+    // Function to change overall colors of current page
     function makePageCreepy() {
         document.body.classList.add('creepy-colors');
         document.body.style.backgroundColor = 'black';
 
         // Change the colors of the original chat box
-        const originalChatBox = document.getElementById('chat-box'); // or use the appropriate class
-        originalChatBox.style.backgroundColor = 'black'; // New background color for the chat box
+        const originalChatBox = document.getElementById('chat-box'); 
+        originalChatBox.style.backgroundColor = 'black'; 
 
         // Change the text colors of user and AI messages
         const userMessages = document.querySelectorAll('.user-message');
@@ -116,15 +118,15 @@ chatInput.addEventListener('keydown', function (event) {
 
         setTimeout(() => {
             document.body.classList.remove('creepy-colors');
-        }, 100000); // Duration of creepy colors in milliseconds
+        }, 100000); 
     }
 
     function randomlyDuplicateChatBox() {
         const chatBox = document.getElementById('chat-box');
         const body = document.body;
-        const maxNumberOfDuplicates = 20; // Limit the number of duplicates
-        let intervalDuration = 100; // Interval duration in milliseconds
-        let duplicateCount = 0; // Counter for the number of duplicates
+        const maxNumberOfDuplicates = 20; 
+        let intervalDuration = 100; 
+        let duplicateCount = 0; 
 
         function randomizeText(text) {
             return text.split('').map(char => char.trim() ? String.fromCharCode(Math.random() * (127 - 33) + 33) : ' ').join('');
@@ -140,10 +142,10 @@ chatInput.addEventListener('keydown', function (event) {
         function createAndShuffleDuplicate() {
             if (duplicateCount < maxNumberOfDuplicates) {
                 let clone = chatBox.cloneNode(true);
-                clone.classList.add('chat-box-clone'); // Add a class for styling and counting
+                clone.classList.add('chat-box-clone'); 
                 clone.style.position = 'absolute';
-                clone.style.left = `${Math.random() * 100}vw`; // Position within the viewport width
-                clone.style.top = `${Math.random() * 100}vh`; // Position within the viewport height
+                clone.style.left = `${Math.random() * 100}vw`; 
+                clone.style.top = `${Math.random() * 100}vh`;
                 body.appendChild(clone);
 
                 // Shuffle text in the clone
@@ -151,18 +153,17 @@ chatInput.addEventListener('keydown', function (event) {
 
                 duplicateCount++;
                 if (duplicateCount === maxNumberOfDuplicates) {
-                    redirectToNewPage(); // Call the function to turn the screen black
+                    redirectToNewPage(); 
                 }
             }
         }
 
-        setInterval(createAndShuffleDuplicate, 500); // Create a new duplicate every 500 milliseconds
+        setInterval(createAndShuffleDuplicate, 500);
     }
 
     function redirectToNewPage() {
         const newPageUrl = 'index3.html';
 
-        // Redirect to the new page
         window.location.href = newPageUrl;
     }
 
